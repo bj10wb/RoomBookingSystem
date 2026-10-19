@@ -30,12 +30,10 @@ CET2007 Systems. Development: a C# (.NET 10) console application for booking uni
 
 ```
 
-git clone https://github.com/bj10wb/UniversityRoomBookingSystem.git
-
-cd UniversityRoomBookingSystem
-
+git clone https://github.com/bj10wb/RoomBookingSystem.git
+cd RoomBookingSystem
 dotnet build
-
+dotnet test
 dotnet run --project UniversityRoomBookingSystem
 
 ```
