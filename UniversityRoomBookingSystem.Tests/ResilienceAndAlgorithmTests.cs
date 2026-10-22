@@ -87,11 +87,19 @@ namespace UniversityRoomBookingSystem.Tests
         [Fact]
         public void FileLogger_InvalidPath_RecordsObservableErrorWithoutCrashing()
         {
-            var logger = new FileLogger("??::invalid_path/<>\\log.txt");
-            bool logged = logger.Log("Test message");
+            string blockingFile = Path.GetTempFileName();
+            try
+            {
+                var logger = new FileLogger(Path.Combine(blockingFile, "log.txt"));
+                bool logged = logger.Log("Test message");
 
-            Assert.False(logged);
-            Assert.NotNull(logger.LastLoggingError);
+                Assert.False(logged);
+                Assert.NotNull(logger.LastLoggingError);
+            }
+            finally
+            {
+                File.Delete(blockingFile);
+            }
         }
 
         [Fact]
