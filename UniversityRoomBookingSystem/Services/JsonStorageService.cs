@@ -58,6 +58,10 @@ namespace UniversityRoomBookingSystem.Services
                     {
                         return (false, null, $"Room at index {i} has invalid core invariants.");
                     }
+                    if (room.Equipment is null)
+                    {
+                        return (false, null, $"Room '{room.Id}' has no equipment list.");
+                    }
                     if (room is ComputerLab lab && lab.Workstations <= 0)
                     {
                         return (false, null, $"Computer lab '{lab.Id}' has invalid workstation count ({lab.Workstations}).");
@@ -120,9 +124,14 @@ namespace UniversityRoomBookingSystem.Services
                     {
                         return (false, null, $"Booking at index {i} has invalid core invariants.");
                     }
+
                     if (booking.Session.Start >= booking.Session.End || booking.Session.StudentCount <= 0)
                     {
                         return (false, null, $"Booking '{booking.BookingId}' contains an invalid session window or student count.");
+                    }
+                    if (booking.Session.RequiredEquipment is null)
+                    {
+                        return (false, null, $"Booking '{booking.BookingId}' has no required-equipment list.");
                     }
                 }
 
