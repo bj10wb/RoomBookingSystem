@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UniversityRoomBookingSystem.Models;
 using UniversityRoomBookingSystem.Repositories;
@@ -47,20 +48,43 @@ namespace UniversityRoomBookingSystem.Services
                 }
             }
 
-            var existingBookings = _bookingRepository.GetByRoomId(roomId);
-            foreach (var existingBooking in existingBookings)
+            if (HasOverlap(roomId, session.Start, session.End))
             {
-                var existingSession = existingBooking.Session;
-                bool overlaps = session.Start < existingSession.End && existingSession.Start < session.End;
-                if (overlaps)
-                {
-                    return (false, null, "Requested session overlaps an existing booking for this room.");
-                }
+                return (false, null, "Requested session overlaps an existing booking for this room.");
             }
 
             var booking = new Booking(roomId, session);
             _bookingRepository.Add(booking);
             return (true, booking, null);
+        }
+        public List<Room> FindSuitableRooms(int studentCount, IEnumerable<Equipment>? requiredEquipment, DateTime? start = null, DateTime? end = null)
+        {
+            var suitableRooms = new List<Room>();
+            var required = requiredEquipment?.ToList();
+
+            foreach (var room in _roomRepository.GetAll())
+            {
+                if (!room.IsSuitable(studentCount, required)) continue;
+                if (start.HasValue && end.HasValue && HasOverlap(room.Id, start.Value, end.Value)) continue;
+                suitableRooms.Add(room);
+            }
+
+            var roomArray = suitableRooms.ToArray();
+            ManualAlgorithms.QuickSortByCapacity(roomArray, 0, roomArray.Length - 1, ascending: true);
+            return roomArray.ToList();
+        }
+
+        private bool HasOverlap(string roomId, DateTime start, DateTime end)
+        {
+            foreach (var existingBooking in _bookingRepository.GetByRoomId(roomId))
+            {
+                var existingSession = existingBooking.Session;
+                if (start < existingSession.End && existingSession.Start < end)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
