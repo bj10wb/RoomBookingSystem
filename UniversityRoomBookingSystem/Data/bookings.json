@@ -1,0 +1,44 @@
+[
+  {
+    "BookingId": "10000000-0000-4000-8000-000000000001",
+    "RoomId": "CL-201",
+    "Session": {
+      "ModuleName": "CET1001 Programming Lab",
+      "StudentCount": 20,
+      "RequiredEquipment": [
+        2
+      ],
+      "Start": "2026-11-02T09:00:00",
+      "End": "2026-11-02T11:00:00"
+    },
+    "CreatedAt": "2026-10-25T13:25:00Z"
+  },
+  {
+    "BookingId": "10000000-0000-4000-8000-000000000002",
+    "RoomId": "LT-A",
+    "Session": {
+      "ModuleName": "CET2007 Systems Design",
+      "StudentCount": 120,
+      "RequiredEquipment": [
+        0
+      ],
+      "Start": "2026-11-02T13:00:00",
+      "End": "2026-11-02T15:00:00"
+    },
+    "CreatedAt": "2026-10-25T13:25:00Z"
+  },
+  {
+    "BookingId": "10000000-0000-4000-8000-000000000003",
+    "RoomId": "SR-102",
+    "Session": {
+      "ModuleName": "MAT1010 Tutorial",
+      "StudentCount": 12,
+      "RequiredEquipment": [
+        1
+      ],
+      "Start": "2026-11-03T10:00:00",
+      "End": "2026-11-03T11:00:00"
+    },
+    "CreatedAt": "2026-10-25T13:25:00Z"
+  }
+]

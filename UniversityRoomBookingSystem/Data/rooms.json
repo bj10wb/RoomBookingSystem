@@ -1,0 +1,66 @@
+[
+  {
+    "$type": "standard",
+    "Id": "SR-101",
+    "Name": "Seminar Room 101",
+    "Capacity": 30,
+    "Equipment": [
+      0,
+      1
+    ]
+  },
+  {
+    "$type": "standard",
+    "Id": "SR-102",
+    "Name": "Small Tutorial Room",
+    "Capacity": 15,
+    "Equipment": [
+      1
+    ]
+  },
+  {
+    "$type": "computerlab",
+    "Workstations": 25,
+    "Id": "CL-201",
+    "Name": "Software Engineering Lab",
+    "Capacity": 25,
+    "Equipment": [
+      2,
+      0
+    ]
+  },
+  {
+    "$type": "computerlab",
+    "Workstations": 35,
+    "Id": "CL-202",
+    "Name": "Data Science Lab",
+    "Capacity": 40,
+    "Equipment": [
+      2,
+      0,
+      1
+    ]
+  },
+  {
+    "$type": "lecturetheatre",
+    "Id": "LT-A",
+    "Name": "Main Lecture Theatre",
+    "Capacity": 150,
+    "Equipment": [
+      0,
+      3,
+      5
+    ]
+  },
+  {
+    "$type": "lecturetheatre",
+    "Id": "LT-B",
+    "Name": "Faculty Auditorium",
+    "Capacity": 80,
+    "Equipment": [
+      0,
+      3,
+      4
+    ]
+  }
+]
