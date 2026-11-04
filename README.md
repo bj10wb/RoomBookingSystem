@@ -83,7 +83,3 @@ Class and sequence diagrams are in [docs/diagrams.md](docs/diagrams.md). GitHub 
 - **Dependency injection:** objects receive their dependencies through constructors. `Program.cs` is the single place where concrete classes are created.
 - **Separation of concerns:** the UI never contains business rules, and the services never write to the console. Services return results (`StatusMessage`, tuples) and the UI decides how to show them.
 - **Error handling:** expected failures such as a rejected booking return a result rather than throwing. File problems are caught, reported and logged.
-
-## AI use
-
-(Complete this section to match the declaration your module requires.)
