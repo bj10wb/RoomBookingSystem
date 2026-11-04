@@ -141,7 +141,6 @@ namespace UniversityRoomBookingSystem.Tests
             Assert.Single(saved);
             Assert.Equal(existingBooking.BookingId, saved[0].BookingId);
         }
-
         [Fact]
         public void Create_AdjacentBooking_IsAccepted()
         {
